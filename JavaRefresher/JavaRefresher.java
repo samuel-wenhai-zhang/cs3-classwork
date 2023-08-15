@@ -93,10 +93,27 @@ public class JavaRefresher {
                     "at least one none null value.");
         }
 
-        /*  INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
-        //  You can use all methods from the String class and native arrays.
+        String vowels = "AaEeIiOoUu";
+        int maxVowels = -1;
+        int maxIndex = -1;
 
-        return -1;
+        for (int i = 0; i < arrayOfStrings.length; i++) {
+            String s = arrayOfStrings[i];
+            if (s != null) {
+                int count = 0;
+                for (int j = 0; j < s.length(); j++) {
+                    if (vowels.contains(s.substring(j, j+1))) {
+                        count++;
+                    }
+                }
+                if (count > maxVowels) {
+                    maxVowels = count;
+                    maxIndex = i;
+                }
+            }
+        }
+
+        return maxIndex;
     }
 
 
