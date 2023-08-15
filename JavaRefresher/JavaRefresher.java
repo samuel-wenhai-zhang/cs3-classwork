@@ -1,3 +1,5 @@
+import java.util.Random;
+
 // SAMUEL ZHANG
 
 
@@ -139,9 +141,23 @@ public class JavaRefresher {
                     ", numDaysInYear: " + numDaysInYear);
         }
 
-        /*  INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
+        int[] birthdays = new int[numPeople];
+        
+        for (int i = 0; i < birthdays.length; i++) {
+            birthdays[i] = (int) (Math.random() * numDaysInYear);
+        }
 
-        return -1; 
+        int count = 0;
+
+        for (int i = 0; i < birthdays.length; i++) {
+            for (int j = i + 1; j < birthdays.length; j++) {
+                if (birthdays[j] == birthdays[i]) {
+                    count++;
+                }
+            }
+        }
+
+        return count; 
     }
 
 
