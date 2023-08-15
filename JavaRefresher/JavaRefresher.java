@@ -19,9 +19,13 @@ public class JavaRefresher {
                     " must be equal length.");
         }
 
-        /*  INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
-
-        return -1;
+        int dist = 0;
+        for (int i = 0; i < aData.length; i++) {
+            if (aData[i] != bData[i]) {
+                dist++;
+            }
+        }
+        return dist;
     }
 
 
@@ -42,7 +46,23 @@ public class JavaRefresher {
                     "isPermutation. neither parameter may equal null.");
         }
 
-        /*  INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/        
+        if (aData.length != bData.length) {
+            return false;
+        }
+
+        boolean[] usedIndexes = new boolean[bData.length];
+
+        outerloop:
+        for (int i = 0; i < aData.length; i++) {
+            int num = aData[i];
+            for (int j = 0; j < bData.length; j++) {
+                if (bData[j] == num && !usedIndexes[j]) {
+                    usedIndexes[j] = true;
+                    continue outerloop;
+                }
+            }
+            return false;
+        }
 
         return true; 
     }
