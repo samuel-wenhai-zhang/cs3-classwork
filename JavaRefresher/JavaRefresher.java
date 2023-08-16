@@ -1,5 +1,3 @@
-import java.util.Random;
-
 // SAMUEL ZHANG
 
 
@@ -187,7 +185,13 @@ public class JavaRefresher {
                     "and may only contain 'q's and '.'s");        
         }
 
-        /*  INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
+
+        int[][][] queens = new int[][][];
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+
+            }
+        }
 
         return false; 
     }
@@ -195,6 +199,28 @@ public class JavaRefresher {
 
     // !!!!! ***** !!!!! ***** !!!!! ****** !!!!! ****** !!!!! ****** !!!!!!
     //  Put your birthday problem experiment code here:
+    public static double birthdayExperimentAverage(int numPeople, int numDaysInYear, int experiments) {
+        int sum = 0;
+
+        for (int i = 0; i < experiments; i++) {
+            sum += sharedBirthdays(numPeople, numDaysInYear);
+        }
+
+        double average = (double) sum / experiments;
+        return average;
+    }
+
+    public static int birthdayExperimentCount(int numPeople, int numDaysInYear, int experiments) {
+        int count = 0;
+
+        for (int i = 0; i < experiments; i++) {
+            if (sharedBirthdays(numPeople, numDaysInYear) > 0) {
+                count++;
+            } 
+        }
+        
+        return count;
+    }
 
 
 
