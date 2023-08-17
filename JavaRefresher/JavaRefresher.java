@@ -139,24 +139,20 @@ public class JavaRefresher {
                     ", numDaysInYear: " + numDaysInYear);
         }
 
-        int[] birthdays = new int[numPeople];
-        
-        for (int i = 0; i < birthdays.length; i++) {
-            birthdays[i] = (int) (Math.random() * numDaysInYear);
+        int[] days = new int[numDaysInYear];
+
+        for (int i = 0; i < numPeople; i++) {
+            days[(int) (Math.random() * numDaysInYear)]++;
         }
 
         int count = 0;
-
-        for (int i = 0; i < birthdays.length; i++) {
-            for (int j = i + 1; j < birthdays.length; j++) {
-                if (birthdays[j] == birthdays[i]) {
-                    count++;
-                }
-            }
+        for (int i = 0; i < days.length; i++) {
+            count += days[i] * (days[i] - 1) / 2;
         }
-
-        return count; 
+        return count;
     }
+
+
 
 
     /**
@@ -185,15 +181,34 @@ public class JavaRefresher {
                     "and may only contain 'q's and '.'s");        
         }
 
-
-        int[][][] queens = new int[][][];
+        int[][] queens = new int[board.length * board.length][2];
+        int iterator = 0;
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-
+                if (board[row][col] == 'q') {
+                    queens[iterator] = new int[] {row, col};
+                    iterator++;
+                }
+            }
+        }
+        for (int i = 0; i < iterator; i++) {
+            for (int j = i + 1; j < iterator; j++) {
+                int row1 = queens[i][0], col1 = queens[i][1], row2 = queens[j][0], col2 = queens[j][1];
+                if (row1 == row2 || col1 == col2 || sameDiagonal(row1, col1, row2, col2)) {
+                    return false;
+                }
             }
         }
 
-        return false; 
+
+        return true; 
+    }
+
+    public static boolean sameDiagonal(int row1, int col1, int row2, int col2) {
+        if (Math.abs(row2 - row1) == Math.abs(col2 - col1)) {
+            return true;
+        }
+        return false;
     }
 
 

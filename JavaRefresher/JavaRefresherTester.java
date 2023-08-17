@@ -1,4 +1,4 @@
-/*
+/* Birthday Experiments
 1. 45.122 pairs
 2. 90 people
 3. The percentage first exceeds 50% at 23 people. This answer surprises me because it's pretty small and much less than my original prediction of 90 people.
@@ -410,7 +410,7 @@ public class JavaRefresherTester {
         //     System.out.println("***** FAILED ***** test 20, mostVowels");
         // }
         
-        // // test 21, sharedBirthdays, simple test
+        // test 21, sharedBirthdays, simple test
         // int pairs = JavaRefresher.sharedBirthdays(1, 365);
         // System.out.println(newline + "Test 21 shared birthdays: expected: 0, actual: " + pairs);
         // int expectedShared = 0;
@@ -600,7 +600,7 @@ public class JavaRefresherTester {
 
     public static void birthdayExperiments() {
         // Experiment #1
-        // System.out.println("Experiment #1: " + JavaRefresher.birthdayExperimentAverage(182, 365, 1000000));
+        System.out.println("Experiment #1: " + JavaRefresher.birthdayExperimentAverage(182, 365, 1000000));
         
         // Experiment #3
         for (int i = 2; i <= 100; i++) {
