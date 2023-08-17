@@ -194,7 +194,7 @@ public class JavaRefresher {
         for (int i = 0; i < iterator; i++) {
             for (int j = i + 1; j < iterator; j++) {
                 int row1 = queens[i][0], col1 = queens[i][1], row2 = queens[j][0], col2 = queens[j][1];
-                if (row1 == row2 || col1 == col2 || sameDiagonal(row1, col1, row2, col2)) {
+                if (row1 == row2 || col1 == col2 || (Math.abs(row2 - row1) == Math.abs(col2 - col1))) {
                     return false;
                 }
             }
@@ -203,14 +203,6 @@ public class JavaRefresher {
 
         return true; 
     }
-
-    public static boolean sameDiagonal(int row1, int col1, int row2, int col2) {
-        if (Math.abs(row2 - row1) == Math.abs(col2 - col1)) {
-            return true;
-        }
-        return false;
-    }
-
 
     // !!!!! ***** !!!!! ***** !!!!! ****** !!!!! ****** !!!!! ****** !!!!!!
     //  Put your birthday problem experiment code here:
