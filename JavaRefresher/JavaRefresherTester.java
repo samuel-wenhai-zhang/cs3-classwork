@@ -114,45 +114,32 @@ public class JavaRefresherTester {
     public static void main(String[] args) {
         // birthdayExperiments();
         final String newline = System.getProperty("line.separator");
+        // test 1, hamming distance
+        int[] h1 = { -2, 0, 1, 5, -2, -9, -8, -4, -3, -9, 6, 2, 10, 8, 7 };
+        int[] h2 = { -2, 0, 1, 5, -2, -9, -2, -4, -3, -9, 6, 2, 10, 7, 8 };
+        int expected = 3;
+        int actual = JavaRefresher.hammingDistance(h1, h2);
+        System.out.println("Test 1 hamming distance: expected value: " + expected
+                + ", actual value: " + actual);
+        if (expected == actual) {
+            System.out.println(" passed test 1, hamming distance");
+        } else {
+            System.out.println(" ***** FAILED ***** test 1, hamming distance");
+        }
 
-        // // test 1, hamming distance
-        // int[] h1 = { 1, 2, 3, 4, 5, 4, 3, 2, 1 };
-        // int[] h2 = { 1, 2, 10, 4, 5, 4, 3, -10, 1 };
-        // int expected = 2;
-        // int actual = JavaRefresher.hammingDistance(h1, h2);
-        // System.out.println("Test 1 hamming distance: expected value: " + expected
-        //         + ", actual value: " + actual);
-        // if (expected == actual) {
-        //     System.out.println(" passed test 1, hamming distance");
-        // } else {
-        //     System.out.println(" ***** FAILED ***** test 1, hamming distance");
-        // }
-        
-        // // test 2, hamming distance
-        // h1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        // h2 = new int[] { -6, -6, -6, -6, -6, -6, -6, -6, -6, -6 };
-        // expected = 10;
-        // actual = JavaRefresher.hammingDistance(h1, h2);
-        // System.out.println(newline + "Test 2 hamming distance: expected value: " + expected
-        //         + ", actual value: " + actual);
-        // if (expected == actual) {
-        //     System.out.println(" passed test 2, hamming distance");
-        // } else {
-        //     System.out.println(" ***** FAILED ***** test 2, hamming distance");
-        // }
-        
-        // // test 3, hamming distance
-        // h1 = new int[500000];
-        // h2 = new int[500000];
-        // expected = 0;
-        // actual = JavaRefresher.hammingDistance(h1, h2);
-        // System.out.println(newline + "Test 3 hamming distance: expected value: " + expected
-        //         + ", actual value: " + actual);
-        // if (expected == actual) {
-        //     System.out.println(" passed test 3, hamming distance");
-        // } else {
-        //     System.out.println(" ***** FAILED ***** test 3, hamming distance");
-        // }
+        // test 2, hamming distance
+        h1 = new int[1000];
+        h2 = new int[1000];
+        h2[500] = 1;
+        expected = 1;
+        actual = JavaRefresher.hammingDistance(h1, h2);
+        System.out.println(newline + "Test 2 hamming distance: expected value: " + expected
+                + ", actual value: " + actual);
+        if (expected == actual) {
+            System.out.println(" passed test 2, hamming distance");
+        } else {
+            System.out.println(" ***** FAILED ***** test 2, hamming distance");
+        }
         
         // // test 4, isPermutation
         int[] a = { 1, 2, 3 };
@@ -577,11 +564,6 @@ public class JavaRefresherTester {
         } else {
             System.out.println(" ***** FAILED ***** test 33, queensAreSafe");
         }
-        
-        // DELETE THE ABOVE TESTS IN THE VERSION OF THE FILE YOU TURN IN
-
-        // add tests here.
-
     } // end of main method
 
     // pre: list != null
