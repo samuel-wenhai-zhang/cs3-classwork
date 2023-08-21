@@ -1,6 +1,5 @@
 // SAMUEL ZHANG
 
-
 public class JavaRefresher {
 
     /**
