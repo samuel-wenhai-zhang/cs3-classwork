@@ -1,6 +1,6 @@
 public class IsoscelesTriangle extends Triangle{
-    public IsoscelesTriangle(double b, double l) {
-        super(b, l, l);
+    public IsoscelesTriangle(double base, double leg) {
+        super(base, leg, leg);
     }
 
     @Override
