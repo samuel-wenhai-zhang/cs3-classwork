@@ -13,20 +13,32 @@ public class PolygonFactory {
         int choice;
         do {
             System.out.println("Do you want to\n1) Create a new polygon\n2) Display polygons\n3) Quit");
-            choice = getInput(input);
+            choice = getChoice(input);
             System.out.println();
 
             switch (choice) {
                 case 1:
                     System.out.println("What type of polygon is it?\n1) Triangle\n2) Rectangle\n3) Pentagon\n4) Hexagon\n5) Octagon");
-                    choice = getInput(input);
+                    choice = getChoice(input);
                     System.out.println();
                     
                     switch (choice) {
                         case 1:
                             System.out.println("What type of triangle is it?\n1) Isosceles\n2) Equilateral\n3) Neither of these");
-                            choice = getInput(input);
+                            choice = getChoice(input);
                             System.out.println();
+
+                            switch (choice) {
+                                case 1:
+                                    
+                                    break;
+                                case 2:
+                                    System.out.println("What is the side length of the triangle?");
+                                    polygons.add(new EquilateralTriangle(getSide(input));
+                                    break;
+                                case 3:
+                                    break;
+                            }
                             break;
                         case 2:
                             break;
@@ -47,9 +59,24 @@ public class PolygonFactory {
     }
 
 
-    public static int getInput(Scanner input) {
+    public static int getChoice(Scanner input) {
         try {
             int choice = input.nextInt();
+            if (choice < 0) {
+                System.out.println("I'm sorry, I cannot work with negative dimensions.");
+                return -1;
+            }
+            return choice;
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input: Must be a number.");
+            return -1;
+        }
+    }
+
+    public static double getSide(Scanner input) {
+        try {
+            double choice = input.nextDouble();
             if (choice < 0) {
                 System.out.println("I'm sorry, I cannot work with negative dimensions.");
                 return -1;
