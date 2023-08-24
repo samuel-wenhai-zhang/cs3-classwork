@@ -5,6 +5,6 @@ public class Pentagon extends RegularNGon{
 
     @Override
     public String getType() {
-        return "Pentagon";
+        return "regular pentagon";
     }
 }

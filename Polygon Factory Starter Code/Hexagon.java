@@ -5,6 +5,6 @@ public class Hexagon extends RegularNGon{
 
     @Override
     public String getType() {
-        return "Hexagon";
+        return "regular hexagon";
     }
 }

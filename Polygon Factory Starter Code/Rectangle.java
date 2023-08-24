@@ -16,6 +16,6 @@ public class Rectangle implements Polygon {
     }
 
     public String getType() {
-        return "Rectangle";
+        return "rectangle";
     }
 }

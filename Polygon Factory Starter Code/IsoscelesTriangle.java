@@ -1,10 +1,10 @@
 public class IsoscelesTriangle extends Triangle{
-    public IsoscelesTriangle(double base, double leg) {
-        super(base, leg, leg);
+    public IsoscelesTriangle(double leg, double base) {
+        super(leg, leg, base);
     }
 
     @Override
     public String getType() {
-        return "Isosceles Triangle";
+        return "isosceles triangle";
     }
 }

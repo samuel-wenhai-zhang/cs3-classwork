@@ -5,6 +5,6 @@ public class EquilateralTriangle extends Triangle{
 
     @Override
     public String getType() {
-        return "Equilateral Triangle";
+        return "equilateral triangle";
     }
 }
