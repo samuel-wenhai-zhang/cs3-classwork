@@ -34,7 +34,9 @@ public class PolygonFactory {
                                     break;
                                 case 2:
                                     System.out.println("What is the side length of the triangle?");
-                                    polygons.add(new EquilateralTriangle(getSide(input));
+                                    EquilateralTriangle et = new EquilateralTriangle(getSide(input);
+                                    System.out.println("The area of this + " et.getType() + " is " + area() + " and its perimeter is " + et.perimeter() + ".");
+                                    polygons.add(et);
                                     break;
                                 case 3:
                                     break;
@@ -51,6 +53,9 @@ public class PolygonFactory {
                     }
                     break;
                 case 2:
+                    for (int i = 0; i < polygons.size(); i++) {
+                        System.out.println((i+1) + ") " + polygons.get(i).getType());
+                    }
                     break;
             }
 
