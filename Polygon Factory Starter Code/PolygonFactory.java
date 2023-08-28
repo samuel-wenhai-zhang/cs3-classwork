@@ -26,6 +26,8 @@ public class PolygonFactory {
                         break;
                 break;
             case 2:
+                choice = choosePolygon(input, polygons);
+                
                 break;
             case 3:
                 System.out.println("We hate to see you Poly-Go!");
@@ -33,17 +35,21 @@ public class PolygonFactory {
         }
     }
 
-    public static void displayPolygons(ArrayList<Polygon> polygons) {
-        System.out.println("Available polygons");
+    public static int choosePolygon(Scanner input, ArrayList<Polygon> polygons) {
+        // System.out.println("Available polygons");
+        // for (int i = 0; i < polygons.size(); i++) {
+        //     System.out.println((i + 1) + ") " + polygons.get(i).getType());
+        // }
+        String[] choices = new String[polygons.size()];
         for (int i = 0; i < polygons.size(); i++) {
-            System.out.println((i + 1) + ") " + polygons.get(i).getType());
+            choices[i] = polygons.get(i);
         }
+        return getChoice(input, "Available polygons", choices);
     }
         
-    public static void displayChoices(String[] choices) {
-        for (int i = 0; i < choices.length; i++) {
-            System.out.println((i + 1) + ") " + choices[i]);
-        }
+    public static void displayPolygon(ArrayList<Polygon> polygons, int choice) {
+        Polygon polygon = polygons.get(choice);
+        
     }
 
     public static int getChoice(Scanner input, String message, String[] choices) {
@@ -64,6 +70,10 @@ public class PolygonFactory {
         }
     }
 
-
-
+    public static void displayChoices(String[] choices) {
+        for (int i = 0; i < choices.length; i++) {
+            System.out.println((i + 1) + ") " + choices[i]);
+        }
+    }
+        
 }
