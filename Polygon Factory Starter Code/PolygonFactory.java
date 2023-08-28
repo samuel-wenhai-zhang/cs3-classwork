@@ -14,6 +14,16 @@ public class PolygonFactory {
         int choice = getChoice(input, "Do you want to", new String {"Create a new polygon", "Display polygons", "Quit"});
         switch (choice) {
             case 1:
+                choice = getChoice(input, "What type of polygon is it?", new String{"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon"});
+                switch (choice) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                        break;
                 break;
             case 2:
                 break;
@@ -23,6 +33,13 @@ public class PolygonFactory {
         }
     }
 
+    public static void displayPolygons(ArrayList<Polygon> polygons) {
+        System.out.println("Available polygons");
+        for (int i = 0; i < polygons.size(); i++) {
+            System.out.println((i + 1) + ") " + polygons.get(i).getType());
+        }
+    }
+        
     public static void displayChoices(String[] choices) {
         for (int i = 0; i < choices.length; i++) {
             System.out.println((i + 1) + ") " + choices[i]);
