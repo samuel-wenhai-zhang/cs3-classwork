@@ -12,46 +12,57 @@ public class PolygonFactory {
         ArrayList<Polygon> polygons = new ArrayList<Polygon>();
 
         int choice = getChoice(input, "Do you want to", new String[] {"Create a new polygon", "Display polygons", "Quit"});
-        switch (choice) {
-            case 1:
-                ArrayList<Double> sides = new ArrayList<Double>();
-                choice = getChoice(input, "What type of polygon is it?", new String[] {"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon"});
-                switch (choice) {
-                    case 1:
-                        choice = getChoice(input, "What type of triangle is it?", new String[] {"Isosceles", "Equilateral", "Neither of these"});
-                        switch (choice) {
-                            case 1: 
-                                sides = getSides(input, new String[] {"leg", "base"}, "isosceles triangle");
-                                addPolygon(polygons, new IsoscelesTriangle(sides[0], sides[1]));
-                                break;
-                            case 2:
-                                sides = getSides(input, new String[] {"side"}, "equilateral triangle");
-                                addPolygon(polygons, new EquilateralTriangle(sides[0]));
-                                break;
-                            case 3:
-                                addPolygon(polygons, new Triangle(getSide(input, "What is the 1st side length of the triangle?"),
-                                                                    getSide(input, "What is the 2nd side length of the triangle?"),
-                                                                    getSide(input, "What is the 3rd side length of the triangle?")));
-                                break;
-                        }
-                        break;
-                    case 2:
-                        addPolygon(polygons, new Rectangle(getSide(input, "What is the "),
-                                                            getSide(input, )));
-                        break;
-                    case 3:
-                    case 4:
-                    case 5:
-                        break;
-                }
-                break;
-            case 2:
-                choice = choosePolygon(input, polygons);
-                displayPolygon(polygons.get(choice));
-                break;
-            case 3:
-                System.out.println("We hate to see you Poly-Go!");
-                break;
+        outerLoop:
+        while (true) {
+            choice = getChoice(input, "Do you want to", new String[] {"Create a new polygon", "Display polygons", "Quit"});
+            switch (choice) {
+                case 1:
+                    ArrayList<Double> sides = new ArrayList<Double>();
+                    choice = getChoice(input, "What type of polygon is it?", new String[] {"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon"});
+                    switch (choice) {
+                        case 1:
+                            choice = getChoice(input, "What type of triangle is it?", new String[] {"Isosceles", "Equilateral", "Neither of these"});
+                            switch (choice) {  
+                                case 1: 
+                                    sides = getSides(input, new String[] {"leg", "base"}, "isosceles triangle");
+                                    addPolygon(polygons, new IsoscelesTriangle(sides.get(0), sides.get(1)));
+                                    break;
+                                case 2:
+                                    sides = getSides(input, new String[] {"side length"}, "equilateral triangle");
+                                    addPolygon(polygons, new EquilateralTriangle(sides.get(0)));
+                                    break;
+                                case 3:
+                                    sides = getSides(input, new String[] {"1st side length", "2nd side length", "3rd side length"}, "triangle");
+                                    addPolygon(polygons, new Triangle(sides.get(0), sides.get(1), sides.get(2)));
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            sides = getSides(input, new String[] {"width", "length"}, "rectangle");
+                            addPolygon(polygons, new Rectangle(sides.get(0), sides.get(1)));
+                            break;
+                        case 3:
+                            sides = getSides(input, new String[] {"side length"}, "pentagon");
+                            addPolygon(polygons, new Pentagon(sides.get(0)));
+                            break;
+                        case 4:
+                            sides = getSides(input, new String[] {"side length"}, "hexagon");
+                            addPolygon(polygons, new Hexagon(sides.get(0)));
+                            break;
+                        case 5:
+                            sides = getSides(input, new String[] {"side length"}, "octagon");
+                            addPolygon(polygons, new Octagon(sides.get(0)));
+                            break;
+                    }
+                    break;
+                case 2:
+                    choice = choosePolygon(input, polygons);
+                    displayPolygon(polygons.get(choice));
+                    break;
+                case 3:
+                    System.out.println("We hate to see you Poly-Go!");
+                    break outerLoop;
+            }
         }
     }
 
@@ -111,7 +122,7 @@ public class PolygonFactory {
     public static ArrayList<Double> getSides(Scanner input, String[] variables, String type) {
         ArrayList<Double> sides = new ArrayList<Double>();
         for (int i = 0; i < variables.length; i++) {
-            sides.add(getSide(input, "What is the " + variables[i] + " length of the " + type));
+            sides.add(getSide(input, "What is the " + variables[i] + " of the " + type));
         }
         return sides;
     }
