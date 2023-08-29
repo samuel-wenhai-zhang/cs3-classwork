@@ -12,13 +12,14 @@ public class PolygonFactory {
         ArrayList<Polygon> polygons = new ArrayList<Polygon>();
         int choice;
         ArrayList<Double> sides = new ArrayList<Double>();
+        int num;
 
         outerLoop:
         while (true) {
             choice = getChoice(input, "Do you want to:", new String[] {"Create a new polygon", "Display polygons", "Quit"});
             switch (choice) {
                 case 1:
-                    choice = getChoice(input, "What type of polygon is it?", new String[] {"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon"});
+                    choice = getChoice(input, "What type of polygon is it?", new String[] {"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon", "Regular N-Gon"});
                     switch (choice) {
                         case 1:
                             choice = getChoice(input, "What type of triangle is it?", new String[] {"Isosceles", "Equilateral", "Neither of these"});
@@ -53,6 +54,10 @@ public class PolygonFactory {
                             sides = getSides(input, new String[] {"side length"}, "octagon");
                             addPolygon(polygons, new Octagon(sides.get(0)));
                             break;
+                        case 6:
+                            num = getNum(input, "How many sides?");
+                            sides = getSides(input, new String[] {"side length"}, "n-gon");
+                            addPolygon(polygons, new RegularNGon(num, sides.get(0)));
                     }
                     break;
                 case 2:
@@ -126,6 +131,27 @@ public class PolygonFactory {
             }
         }
     }
+
+    public static int getNum(Scanner input, String message) {
+        while (true) {
+            System.out.println("\n" + message);
+            try {
+                int choice = input.nextInt();
+                if (choice < 0) {
+                    System.out.println("\nI'm sorry, I cannot work with a negative number of sides.");
+                }
+                else if (choice == 0) {
+                    System.out.println("\nI'm sorry, I cannot work with 0 sides.");
+                }
+                else {
+                    return choice;
+                }
+            } catch (InputMismatchException e) {
+                String bad = input.nextLine();
+                System.out.println("\n" + bad + " is not an integer.");
+            }
+        }
+    }    
 
     public static ArrayList<Double> getSides(Scanner input, String[] variables, String type) {
         ArrayList<Double> sides = new ArrayList<Double>();
