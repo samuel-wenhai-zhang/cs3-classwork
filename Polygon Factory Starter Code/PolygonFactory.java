@@ -5,7 +5,7 @@ public class PolygonFactory {
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************************************\n");
         System.out.println("Welcome to the Polygon Factory!\n");
-        System.out.println("**********************************************************\n");
+        System.out.println("**********************************************************");
 
         // your code here
         Scanner input = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class PolygonFactory {
 
         outerLoop:
         while (true) {
-            choice = getChoice(input, "Do you want to", new String[] {"Create a new polygon", "Display polygons", "Quit"});
+            choice = getChoice(input, "Do you want to:", new String[] {"Create a new polygon", "Display polygons", "Quit"});
             switch (choice) {
                 case 1:
                     choice = getChoice(input, "What type of polygon is it?", new String[] {"Triangle", "Rectangle", "Pentagon", "Hexagon", "Octagon"});
@@ -56,11 +56,15 @@ public class PolygonFactory {
                     }
                     break;
                 case 2:
-                    choice = choosePolygon(input, polygons);
-                    displayPolygon(polygons.get(choice));
+                    if (polygons.size() == 0) {
+                        System.out.println("\nNo polygons available.");
+                    } else {
+                        choice = choosePolygon(input, polygons);
+                        displayPolygon(polygons.get(choice - 1));
+                    }
                     break;
                 case 3:
-                    System.out.println("We hate to see you Poly-Go!");
+                    System.out.println("\nWe hate to see you Poly-Go!");
                     break outerLoop;
             }
         }
@@ -71,27 +75,27 @@ public class PolygonFactory {
         for (int i = 0; i < polygons.size(); i++) {
             choices[i] = polygons.get(i).getType();
         }
-        return getChoice(input, "Available polygons", choices);
+        return getChoice(input, "Available polygons:", choices);
     }
         
     public static void displayPolygon(Polygon polygon) {
-        System.out.printf("The area of this %s is %.3f and its perimeter is %.3f.%n", polygon.getType(), polygon.area(), polygon.perimeter());
+        System.out.printf("%nThe area of this %s is %.3f and its perimeter is %.3f.%n", polygon.getType(), polygon.area(), polygon.perimeter());
     }
 
     public static int getChoice(Scanner input, String message, String[] choices) {
         while (true) {
+            System.out.println("\n" + message);
+            displayChoices(choices);
             try {
-                System.out.println(message);
-                displayChoices(choices);
                 int choice = input.nextInt();
                 if (choice < 1 || choices.length < choice) {
-                    System.out.println(choice + " is out of range.");
+                    System.out.println("\n" + choice + " is out of range.");
                 } else {
                     return choice;
                 }
             } catch (InputMismatchException e) {
                 String bad = input.nextLine();
-                System.out.println(bad + " is not an integer.");
+                System.out.println("\n" + bad + " is not an integer.");
             }
         }
     }
@@ -104,17 +108,21 @@ public class PolygonFactory {
 
     public static double getSide(Scanner input, String message) {
         while (true) {
+            System.out.println("\n" + message);
             try {
-                System.out.println(message);
                 double choice = input.nextDouble();
                 if (choice < 0) {
-                    System.out.println("I'm sorry, I cannot work with negative dimensions.");
-                } else {
+                    System.out.println("\nI'm sorry, I cannot work with negative dimensions.");
+                }
+                else if (choice == 0) {
+                    System.out.println("\nI'm sorry, I cannot work with a length of 0.");
+                }
+                else {
                     return choice;
                 }
             } catch (InputMismatchException e) {
                 String bad = input.nextLine();
-                System.out.println(bad + " is not a number.");
+                System.out.println("\n" + bad + " is not a number.");
             }
         }
     }
