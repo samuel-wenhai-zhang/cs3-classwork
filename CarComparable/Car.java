@@ -3,7 +3,6 @@ public class Car implements Comparable<Car> {
     private String type;
     private int horsePower;
 
-    
     public Car(String name, String type, int horsePower) {
         this.name = name;
         this.type = type;
