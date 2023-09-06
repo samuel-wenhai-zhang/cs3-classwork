@@ -3,7 +3,6 @@
  * Greatest number of rounds to reach a winner: 
  */
 
- // You're Trash
 
 import java.util.ArrayList;
 
