@@ -16,10 +16,23 @@ public class Deck {
         }
         Collections.shuffle(deck);
 
-        Iterator cardIterator = deck.iterator();
-        while (cardIterator.hasNext()) {
-            Card aCard = (Card) cardIterator.next();
-            System.out.println(aCard);            
+        // Iterator cardIterator = deck.iterator();
+        // while (cardIterator.hasNext()) {
+        //     Card aCard = (Card) cardIterator.next();
+        //     System.out.println(aCard);            
+        // }
+    }
+
+    public Card drawCard() {
+        if (deck.size() > 0) {
+            return deck.remove(0);
         }
+        else {
+            return null;
+        }
+    }
+
+    public void sortDeck() {
+        Collections.sort(deck);
     }
 }

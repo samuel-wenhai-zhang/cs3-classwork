@@ -1,5 +1,6 @@
 public class Card implements Comparable<Card>{
     private CardValue cardValue;
+
     private Suit suit;
 
     public Card(CardValue cardValue, Suit suit) {
@@ -27,6 +28,7 @@ public class Card implements Comparable<Card>{
         return getCardValue() + " of " + getSuit();
     }
 
+    @Override
     public int compareTo(Card o) {
         if (getCardValue().getCardValue() != o.getCardValue().getCardValue()) {
             return getCardValue().getCardValue() - o.getCardValue().getCardValue();
