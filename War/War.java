@@ -1,6 +1,6 @@
 /*
- * Fewest number of rounds to reach a winner: 
- * Greatest number of rounds to reach a winner: 
+ * Fewest number of rounds to reach a winner: 21
+ * Greatest number of rounds to reach a winner: 493
  */
 
 
@@ -13,6 +13,8 @@ public class War {
 
     public War() {
         round = 1;
+        d1 = new ArrayList<Card>();
+        d2 = new ArrayList<Card>();
         Deck d = new Deck();
         for (int i = 0; i < 26; i++) {
             d1.add(d.drawCard());
