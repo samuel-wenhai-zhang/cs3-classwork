@@ -1,4 +1,4 @@
-public class RegularNGon implements Polygon{
+public class RegularNGon extends Polygon{
 
 	private int n;
 	private double s;

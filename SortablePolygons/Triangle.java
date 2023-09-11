@@ -1,4 +1,4 @@
-public class Triangle implements Polygon{
+public class Triangle extends Polygon{
     private double a;
     private double b;
     private double c;

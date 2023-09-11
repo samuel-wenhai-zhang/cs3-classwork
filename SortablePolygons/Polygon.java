@@ -5,7 +5,7 @@ public abstract class Polygon implements Comparable<Polygon> {
 
     @Override
     public String toString() {
-        return "Type: " + getType() + ", Area: " + area() + ", " + perimeter();
+        return String.format("Type: %s, Area: %.2f, Perimeter: %.2f", getType(), area(), perimeter());
     }
 
     @Override

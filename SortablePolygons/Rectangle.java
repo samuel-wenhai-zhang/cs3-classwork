@@ -1,4 +1,4 @@
-public class Rectangle implements Polygon {
+public class Rectangle extends Polygon {
     private double length;
     private double width;
 
